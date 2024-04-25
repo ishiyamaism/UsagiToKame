@@ -122,7 +122,7 @@ class Program
         if (_stateContext.GetStateType() == StateType.Kame)
         {
             _kameCount++;
-            if (_kameCount >= 3)
+            if (_kameCount >= 2)
             {
                 Console.WriteLine("かめです");
                 _kameCount = 0;
