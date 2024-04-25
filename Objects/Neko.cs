@@ -23,11 +23,11 @@ public sealed class Neko : CharacterBase
   public override string MakePosition(int x)
   {
     string pos = "";
-    for (int i = 0; i <= x; i++)
+    for (int i = 0; i < x; i++)
     {
-      pos += "🐱";
+      pos += "　";
     }
-    return $"{(X + 1).ToString("D3")}:{pos}";
+    return $"{(X + 1).ToString("D3")}:{pos}🐱";
   }
 
   public override void AskedForResponse()
