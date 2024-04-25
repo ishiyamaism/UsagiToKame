@@ -19,7 +19,7 @@ public sealed class Kame : CharacterBase
     string pos = "";
     for (int i = 0; i <= x; i++)
     {
-      pos += "■";
+      pos += "🐢";
     }
     return $"{(X + 1).ToString("D3")}:{pos}";
   }

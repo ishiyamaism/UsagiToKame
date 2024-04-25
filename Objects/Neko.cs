@@ -1,20 +1,22 @@
 namespace UsagiToKame.Objects;
 
-public sealed class Usagi : CharacterBase
+public sealed class Neko : CharacterBase
 {
   // シングルトン
-  private Usagi() : base(0) { }
-  public static Usagi Instance { get; } = new Usagi();
+  private Neko() : base(0) { }
+  public static Neko Instance { get; } = new Neko();
 
 
   public override CharacterBase Change()
   {
-    return Neko.Instance;
+    return Kame.Instance;
   }
   public override void Move()
   {
-    X += 3;
-    Console.WriteLine("ウサギ moved");
+    // ねこはランダムに動く
+    Random r1 = new Random();
+    X += r1.Next(0, 7);
+    Console.WriteLine("ねこ moved");
   }
 
   public override string MakePosition(int x)
@@ -22,7 +24,7 @@ public sealed class Usagi : CharacterBase
     string pos = "";
     for (int i = 0; i <= x; i++)
     {
-      pos += "🐇";
+      pos += "🐱";
     }
     return $"{(X + 1).ToString("D3")}:{pos}";
   }
@@ -30,9 +32,9 @@ public sealed class Usagi : CharacterBase
   public override void AskedForResponse()
   {
     Count++;
-    if (Count >= 5)
+    if (Count >= 10)
     {
-      Console.WriteLine("ウサギです");
+      Console.WriteLine("にゃーん");
       Count = 0;
     }
   }

@@ -8,7 +8,7 @@ public sealed class UsagiState : IState
 
   public void OnChange(StateContext stateContext)
   {
-    stateContext.ChangeState(KameState.Instance);
+    stateContext.ChangeState(NekoState.Instance);
   }
 
   public string GetStateText()

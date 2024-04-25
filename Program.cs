@@ -12,6 +12,7 @@ class Program
     static void Main(string[] args)
     {
         _stateContext.StateChanged += StateContext_StateChanged;
+
         Console.WriteLine("Press Enter to show their positions, ");
         Console.WriteLine("Tab Key to change the player, ");
         Console.WriteLine("RightArrow Key to move the player right");
@@ -19,6 +20,7 @@ class Program
 
         _characters.Add(Kame.Instance);
         _characters.Add(Usagi.Instance);
+        _characters.Add(Neko.Instance);
         _selectedCharacter = _characters[0];
 
         ShowWhichTurn();

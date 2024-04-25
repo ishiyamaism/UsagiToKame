@@ -33,4 +33,5 @@ public enum StateType
 {
   Kame,
   Usagi,
+  Neko,
 }
