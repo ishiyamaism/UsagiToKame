@@ -1,15 +1,13 @@
-﻿using UsagiToKame.States;
+﻿using UsagiToKame.Objects;
+using UsagiToKame.States;
 
 namespace UsagiToKame;
 
 class Program
 {
     static private StateContext _stateContext = new StateContext();
-
-    private static int _kameX = 1;
-    private static int _kameCount = 0;
-    private static int _usagiX = 1;
-    private static int _usagiCount = 0;
+    private static List<CharacterBase> _characters = new List<CharacterBase>();
+    private static CharacterBase _selectedCharacter = Kame.Instance;
 
     static void Main(string[] args)
     {
@@ -18,6 +16,10 @@ class Program
         Console.WriteLine("Tab Key to change player, ");
         Console.WriteLine("RightArrow Key to move right");
         Console.WriteLine("Esc to exit.");
+
+        _characters.Add(Kame.Instance);
+        _characters.Add(Usagi.Instance);
+        _selectedCharacter = _characters[0];
 
         ShowWhichTurn();
 
@@ -44,12 +46,12 @@ class Program
 
                 case ConsoleKey.RightArrow:
                     Console.WriteLine("Press: →");
-                    Move();
+                    _selectedCharacter.Move();
                     break;
 
                 case ConsoleKey.A:
                     Console.WriteLine("Press: A");
-                    Response();
+                    _selectedCharacter.Response();
                     break;
 
                 case ConsoleKey.D0:
@@ -67,78 +69,25 @@ class Program
         }
     }
 
+    // State Observer
+    private static void StateContext_StateChanged()
+    {
+        _selectedCharacter = _selectedCharacter.Change();
+
+        ShowWhichTurn();
+    }
+
     private static void ShowWhichTurn()
     {
         Console.WriteLine($"{_stateContext.GetStateText()}のターン！");
     }
-    // State Observer
-    private static void StateContext_StateChanged()
-    {
-        ShowWhichTurn();
-    }
 
-    private static void Move()
-    {
-        if (_stateContext.GetStateType() == StateType.Kame)
-        {
-            _kameX += 1;
-            Console.WriteLine("かめ moved");
-        }
-        else if (_stateContext.GetStateType() == StateType.Usagi)
-        {
-            _usagiX += 3;
-            Console.WriteLine("ウサギ moved");
-        }
-    }
-
-    private static string MakeKamePosition(int x)
-    {
-        string pos = "";
-        for (int i = 0; i <= x; i++)
-        {
-            pos += "■";
-        }
-        return pos;
-    }
-    private static string MakeUsagiPosition(int x)
-    {
-        string pos = "";
-        for (int i = 0; i <= x; i++)
-        {
-            pos += "▲";
-        }
-        return pos;
-    }
     private static void ShowPositions()
     {
-        string kamePosition = MakeKamePosition(_kameX);
-        Console.WriteLine(kamePosition);
-        string usagiPosition = MakeUsagiPosition(_usagiX);
-        Console.WriteLine(usagiPosition);
-    }
-
-    private static void Response()
-    {
-        if (_stateContext.GetStateType() == StateType.Kame)
+        foreach (var charas in _characters)
         {
-            _kameCount++;
-            if (_kameCount >= 2)
-            {
-                Console.WriteLine("かめです");
-                _kameCount = 0;
-            }
-        }
-
-        if (_stateContext.GetStateType() == StateType.Usagi)
-        {
-            _usagiCount++;
-            if (_usagiCount >= 5)
-            {
-                Console.WriteLine("ウサギです");
-                _usagiCount = 0;
-            }
+            string position = charas.MakePosition(charas.X);
+            Console.WriteLine(position);
         }
     }
-
-
 }
