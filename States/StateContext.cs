@@ -15,10 +15,6 @@ public sealed class StateContext
     return _state.GetStateText();
   }
 
-  public StateType GetStateType()
-  {
-    return _state.GetStateType();
-  }
 
   public event Action? StateChanged;
   internal void ChangeState(IState state)
@@ -27,11 +23,4 @@ public sealed class StateContext
     // State変更時にクライアントに通知
     StateChanged?.Invoke();
   }
-}
-
-public enum StateType
-{
-  Kame,
-  Usagi,
-  Neko,
 }

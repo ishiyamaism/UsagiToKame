@@ -11,8 +11,9 @@ public sealed class Kame : CharacterBase
   }
   public override void Move()
   {
-    X += 1;
-    Console.WriteLine("かめ moved");
+    int shift = 1;
+    X += shift;
+    Console.WriteLine($"かめ moved {shift}");
   }
   public override string MakePosition(int x)
   {

@@ -16,10 +16,5 @@ public sealed class KameState : IState
     return "かめ";
   }
 
-  public StateType GetStateType()
-  {
-    return StateType.Kame;
-  }
-
 
 }

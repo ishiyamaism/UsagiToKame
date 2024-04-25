@@ -16,10 +16,4 @@ public sealed class NekoState : IState
     return "ねこ";
   }
 
-  public StateType GetStateType()
-  {
-    return StateType.Neko;
-  }
-
-
 }

@@ -13,8 +13,9 @@ public sealed class Usagi : CharacterBase
   }
   public override void Move()
   {
-    X += 3;
-    Console.WriteLine("ウサギ moved");
+    int shift = 3;
+    X += shift;
+    Console.WriteLine($"ウサギ moved {shift}");
   }
 
   public override string MakePosition(int x)

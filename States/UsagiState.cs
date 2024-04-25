@@ -16,8 +16,4 @@ public sealed class UsagiState : IState
     return "ウサギ";
   }
 
-  public StateType GetStateType()
-  {
-    return StateType.Usagi;
-  }
 }

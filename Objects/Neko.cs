@@ -15,8 +15,9 @@ public sealed class Neko : CharacterBase
   {
     // ねこはランダムに動く
     Random r1 = new Random();
-    X += r1.Next(0, 7);
-    Console.WriteLine("ねこ moved");
+    int shift = r1.Next(0, 7);
+    X += shift;
+    Console.WriteLine($"ねこ moved {shift}");
   }
 
   public override string MakePosition(int x)

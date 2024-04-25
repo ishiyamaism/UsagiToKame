@@ -6,5 +6,4 @@ public interface IState
   void OnChange(StateContext talkStateMachine);
 
   string GetStateText();
-  StateType GetStateType();
 }
