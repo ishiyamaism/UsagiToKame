@@ -3,9 +3,9 @@ namespace UsagiToKame.Objects;
 public abstract class CharacterBase
 {
   public int X { get; set; }
-  public int Count { get; set; }
+  protected int Count { get; set; }
 
-  public string? Position { get; private set; }
+  protected string? Position { get; private set; }
 
 
   public CharacterBase(int x)
@@ -18,6 +18,6 @@ public abstract class CharacterBase
   public abstract void Move();
   public abstract string MakePosition(int x);
 
-  public abstract void Response();
+  public abstract void AskedForResponse();
 
 }

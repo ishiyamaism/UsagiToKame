@@ -13,8 +13,8 @@ class Program
     {
         _stateContext.StateChanged += StateContext_StateChanged;
         Console.WriteLine("Press Enter to show their positions, ");
-        Console.WriteLine("Tab Key to change player, ");
-        Console.WriteLine("RightArrow Key to move right");
+        Console.WriteLine("Tab Key to change the player, ");
+        Console.WriteLine("RightArrow Key to move the player right");
         Console.WriteLine("Esc to exit.");
 
         _characters.Add(Kame.Instance);
@@ -51,7 +51,7 @@ class Program
 
                 case ConsoleKey.A:
                     Console.WriteLine("Press: A");
-                    _selectedCharacter.Response();
+                    _selectedCharacter.AskedForResponse();
                     break;
 
                 case ConsoleKey.D0:

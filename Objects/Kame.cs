@@ -21,10 +21,10 @@ public sealed class Kame : CharacterBase
     {
       pos += "■";
     }
-    return $"{(X + 1).ToString()}:{pos}";
+    return $"{(X + 1).ToString("D3")}:{pos}";
   }
 
-  public override void Response()
+  public override void AskedForResponse()
   {
     Count++;
     if (Count >= 2)
